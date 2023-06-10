@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     btnStop->move(660,450);
     btnNextStep->move(710,450);
     connect(btnReshow, &QPushButton::clicked, this, [=](){
-        QString path = QFileDialog::getOpenFileName(this,"选取文件",":/Desktop");
+        QString path = QFileDialog::getOpenFileName(this,"选取文件","/Users/zhangjinkai/Desktop");
         file = new QFile(path);
         file->open(QIODevice::ReadOnly);
         char * buffer = new char[15];
@@ -64,7 +64,8 @@ MainWindow::MainWindow(QWidget *parent)
             int y = buffer[1] - '1';
             m_board[y][x] = m_player;
             m_player = 3 - m_player;
-            //Delay_MSec(200);
+            Delay_MSec(200);
+            update();
 //            QElapsedTimer t;
 //            t.start();
 //            while(t.elapsed() < 200);
